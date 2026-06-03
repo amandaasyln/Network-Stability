@@ -1,7 +1,4 @@
 streamlit
-numpy
 pandas
-matplotlib
-tensorflow
-scikit-learn
+numpy
 speedtest-cli
