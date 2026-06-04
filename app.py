@@ -45,17 +45,6 @@ st.markdown("""
     box-shadow: 0 15px 35px rgba(37,99,235,.25);
 }
 
-.hero h2 {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-.hero-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .metric-card {
     background: white;
     padding: 22px;
@@ -140,16 +129,6 @@ button[kind="primary"], .stButton button {
 </style>
 """, unsafe_allow_html=True)
 
-# SIDEBAR
-st.sidebar.markdown("## ᯤ Internet Stability<br>Tester", unsafe_allow_html=True)
-st.sidebar.markdown("---")
-st.sidebar.markdown("### 🏠︎ Beranda")
-st.sidebar.markdown("### ⏱ Riwayat Pengujian")
-st.sidebar.markdown("<br><br><br>", unsafe_allow_html=True)
-st.sidebar.info(
-    "Aplikasi ini menguji kualitas internet menggunakan parameter Ping, Download, Upload, Packet Loss, dan Jitter."
-)
-st.sidebar.markdown("<br><br>© 2026 Internet Stability Tester", unsafe_allow_html=True)
 
 # HEADER
 st.markdown("""
@@ -173,11 +152,9 @@ def nilai_kualitas(ping, download, upload, packet_loss, jitter):
 # HERO
 st.markdown("""
 <div class="hero">
-    <div class="hero-box">
-        <div>
-            <h2> Siap untuk menguji internet Anda?</h2>
-            <p>Klik tombol di samping untuk memulai pengujian kualitas internet secara real-time.</p>
-        </div>
+    <div>
+        <h2>Siap untuk menguji internet Anda?</h2>
+        <p>Klik tombol di bawah untuk memulai pengujian kualitas internet secara real-time.</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -185,7 +162,8 @@ st.markdown("""
 st.write("")
 
 if st.button(" Jalankan Pengujian", use_container_width=True):
-    with st.spinner("Pengujian membutuhkan beberapa detik..."):
+
+    with st.spinner("🌐 Sedang melakukan speed test, mohon tunggu..."):
         stest = speedtest.Speedtest()
         stest.get_best_server()
 
@@ -217,7 +195,7 @@ if st.button(" Jalankan Pengujian", use_container_width=True):
                 <div class="icon-circle">{icon}</div>
                 <div class="metric-label">{label}</div>
                 <div class="metric-value">{value}</div>
-                <div class="badge">Sangat Baik</div>
+                <div class="badge">Terukur</div>
             </div>
             """, unsafe_allow_html=True)
 
@@ -255,6 +233,8 @@ if st.button(" Jalankan Pengujian", use_container_width=True):
             "Ping": [f"{ping} ms"],
             "Download": [f"{download} Mbps"],
             "Upload": [f"{upload} Mbps"],
+            "Packet Loss": [f"{packet_loss}%"],
+            "Jitter": [f"{jitter} ms"],
             "Status": [status]
         })
 
@@ -265,3 +245,25 @@ if st.button(" Jalankan Pengujian", use_container_width=True):
 
 else:
     st.info("Klik tombol **Jalankan Pengujian** untuk mulai menguji internet.")
+
+st.markdown("""
+<style>
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f7faff;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    padding: 8px;
+    border-top: 1px solid #e5e7eb;
+    z-index: 999;
+}
+</style>
+
+<div class="fixed-footer">
+ Internet Stability Tester • Built with by Amandaasyln • 2026
+</div>
+""", unsafe_allow_html=True)
