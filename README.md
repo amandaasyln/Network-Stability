@@ -1,4 +1,12 @@
 # Network-Stability
+
+<p align="center">
+  <a href="https://network-stability.streamlit.app/">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Open%20App-success?style=for-the-badge">
+  </a>
+</p>
+
+
 <p align="center">A Streamlit-based app for monitoring network quality in real-time and classifying network status
   <b>(Stable / Unstable)</b> using a Long Short-Term Memory (LSTM) Deep Learning model </b>
 </p>
